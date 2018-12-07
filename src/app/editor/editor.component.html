@@ -1,0 +1,68 @@
+<!-- Latest compiled and minified CSS -->
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="width:800px;">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Photo Editor</h4>
+            </div>
+            <div class="modal-body">
+                <div class="editor-upload">
+                    <div class="upload-btn-wrapper">
+                        <button class="btn btn-info btn-block">Select your picture</button>
+                        <input type="file" (change)="fileChangeEvent($event)" class="form-control" />
+                    </div>
+
+                </div>
+                <div class="container">
+
+                    <div class="editor-croper">
+                        <image-cropper [imageChangedEvent]="imageChangedEvent" [imageQuality]="100"
+                            [aspectRatio]="4 / 3" [maintainAspectRatio]="false" [resizeToWidth]="128" format="png" (imageCropped)="imageCropped($event)"
+                            (imageLoaded)="imageLoaded()" (loadImageFailed)="loadImageFailed()"></image-cropper>
+                    </div>
+                    <div class="editor-canvas">
+                        <table>
+                            <tr>
+                                <td style="width: 90%;">
+                                    <canvas #myEditor (mouseup)="mouseUp() " (mouseleave)="mouseLeave($event)"
+                                        (mousedown)="mouseDown($event)" (mousemove)="mouseMove($event)" style="background-color: transparent"
+                                        width="500" height="500"></canvas>
+                                    <br />
+                                    <button type="button" (click)="clearArea()" class="btn btn-danger">Reset</button>
+
+                                </td>
+                                <td>
+                                    <h3>Color</h3>
+                                    <div style="padding: 5px;text-align: center;">
+                                        <div (click)="SetColor('red')" style="background-color: red;width: 50px; height: 50px;border-radius: 50%;cursor: pointer;"></div>
+                                        <div (click)="SetColor('#0000FF')" style="background-color: blue;width: 50px; height: 50px;border-radius: 50%;cursor: pointer;"></div>
+                                        <div (click)="SetColor('green')" style="background-color: green;width: 50px; height: 50px;border-radius: 50%;cursor: pointer;"></div>
+                                        <div (click)="SetColor('yellow')" style="background-color: yellow;width: 50px; height: 50px;border-radius: 50%;cursor: pointer;"></div>
+
+                                    </div>
+                                    <h3>width</h3>
+                                    <input (change)="SetThickness($event)" type="range" #thickness name="thickness"
+                                        step="1" min="1" max="10">
+
+
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+                <img #img style="display: none" (load)="afterLoading()" [src]="croppedImage" />
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" (click)="SavePicture()" data-dismiss="modal">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>

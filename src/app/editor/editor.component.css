@@ -1,0 +1,44 @@
+.container{
+    width: 100%;
+    display:table;
+}
+.editor-upload{
+    width: 100%;
+ 
+}
+.editor-canvas{
+    /*width: 50%;*/
+   /* display: table-cell;*/
+    text-align: center;
+    
+    vertical-align: top;
+    
+}
+.editor-croper{
+   /* width: 50%;*/
+    /*display: table-cell;*/
+  
+}
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+  }
+  
+  
+  
+  .upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+
+  canvas, img {
+    image-rendering: optimizeQuality;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimize-contrast;
+    -ms-interpolation-mode: nearest-neighbor;
+}
